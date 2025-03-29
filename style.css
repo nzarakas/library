@@ -1,0 +1,116 @@
+@font-face {
+    font-family: junicode;
+    src: url(fonts/Junicode.ttf) format('truetype');
+}
+@font-face {
+    font-family: junicode-italic;
+    src: url(fonts/Junicode-Italic.ttf) format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    --dark-green: rgb(106, 156, 137);
+    --light-green: rgb(193, 216, 195);
+    --orange: rgb(255, 167, 37);
+    --cream: rgb(255, 245, 228);
+    --dusty-rose: #f39ab4;
+}
+
+body {
+    background-color: rgb(255,245,228);
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-rows: 1fr 7fr 1fr;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+/* BOOK CARD AREA  */
+#mainContainer {
+    height: 100%;
+    padding: 1rem;
+    grid-area: 2/2/3/3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    > #cardContainer {
+        display: grid;
+        
+        grid-auto-flow: row;
+        
+    }
+    > #newBook {
+        align-self: center;
+        
+    }
+}
+
+.bookCard {
+    padding: 5px;
+    height: 14rem;
+    width: 18rem;
+    background-color: rgb(253, 219, 159);;
+    border: 0;
+    box-shadow: 2px 1px 3px 3px rgba(1, 26, 16, 0.623);
+                /* 0px 0px 1px 1px rgba(108, 216, 174, 0.849); */
+    border-radius: 5px;
+    text-align: center;
+    font-family: junicode, sans-serif;
+    font-size: 1.4rem;
+    color: rgba(24, 23, 23);
+}
+
+form {
+    display: none;
+}
+/* HEADER CSS */
+#header{
+    grid-area: 1/1/2/4;
+    display: flex;
+    flex-direction: row;
+    padding: 0 2rem;
+    
+    >#logo {
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center; 
+        font-size: 1.8rem;  
+    >#owl-logo {
+        height: 100px;
+        width: 100px;
+        }
+    > #logo-text {
+        display: flex;
+        flex-direction: column;
+    }
+    }
+    
+    > #profile {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        > #profile-pic{
+            height: 40px;
+            width: 40px;
+        }
+    }
+}
+/* FOOTER CSS */
+#footer {
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 50px;
+    background-color: var(--dark-green);
+    /* height: 100%; */
+    grid-area: 3/1/4/4;
+    color: rgb(255, 255, 255);
+    
+}

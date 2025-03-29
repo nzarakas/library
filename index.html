@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    
+    <script src="library.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="header">
+        <div id="logo">
+            <img id='owl-logo' src="icons/owl-logo-black.png" alt="own-logo">
+            <div id='logo-text'>
+                <p>Your Personal </p>
+                <p>Library.</p>
+            </div>
+            
+        </div>
+        <div id="profile">
+            <img id="profile-pic" src="icons/icons8-space-75.png" alt="profile-picture">
+            <p id="username">Monocube</p>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="quoteDiv">
+            <p class="quote">"I have always imagined that Paradise will be a kind of a Library."
+                <span class="quoter">Jorge Luis Borges </span>
+            </p>
+        </div>
+        <div class="quoteDiv"><p class="quote">"Libraries store the energy that fuels the imagination. They open up windows
+            to the world and inspire us to explore and achieve, and contribute to improving our quality
+             of life." <span class="quoter">Sidney Sheldon </span>
+       </p>
+        </div>
+        <div class="quoteDiv">
+            <p class="quote">"Bad libraries build collections, good libraries build services, 
+                great libraries build communities."<span class="quoter">R. David Lankes</span>
+            </p>
+        </div>
+        <div class="quoteDiv">
+            <p class="quote">"I have found the most valuable thing in my wallet is my library card."
+            <span class="quoter">Laura Bush </span>
+            </p>
+        </div>
+        <div class="quoteDiv">
+            <p class="quote">"Cutting libraries during a recession is like cutting hospitals during a plague."
+                <span class="quoter">Eleanor Crumblehulme </span>
+            </p>
+        </div>
+
+        
+    </div>
+    <div id="mainContainer">
+        <div id="cardContainer">
+        </div>
+        <button id="newBook">+ New Book</button>
+    </div>
+    
+
+    <form>
+        <label for="bookTitle">Title:</label>
+        <input type="text" id="bookTitle" name="title">
+
+        <label for="bookAuthor">Author:</label>
+        <input type="text" id="bookAuthor" name="author">
+
+        <label for="bookPages">Number of Pages:</label>
+        <input type="text" id="bookPages" name="pages">
+
+        <label for="bookReadStatus">Read?</label>
+        <input type="text" id="bookReadStatus" name="read">
+    </form>
+</body>
+</html>
