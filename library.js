@@ -1,7 +1,7 @@
 const myLibrary = [];
 const cardContainer = document.getElementById("cardContainer");
 const newBook = document.getElementById("newBook");
-const form = document.querySelector("form");
+
 
 //Book Constructor
 function Book (title, author, numOfPages, readStatus) {
@@ -24,6 +24,8 @@ function addToLibrary (title, author, numOfPages, readStatus){
 
 //Clicking on new book button does this
 newBook.addEventListener("click", ()=>{
+    const form = document.querySelector('form');
+    form.classList.toggle('active');
     
 })
 //added some dummy books in array
@@ -39,8 +41,12 @@ myLibrary.forEach(Book => {
     cardContainer.appendChild(card);
     card.classList.add('bookCard');
     
+    const cover = document.createElement('img');
+    cover.setAttribute('src', 'https://covers.openlibrary.org/b/OLID/OL26242482M-S.jpg');
+    card.appendChild(cover);
+
     const infoDiv = document.createElement('div');
-    card.appendChild(infoDiv);
+    card.insertBefore(infoDiv, cover);
     
 
     const cardTitle = document.createElement("h2");
