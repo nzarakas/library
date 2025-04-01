@@ -32,56 +32,64 @@
     <div id="form">
         <form>
             <fieldset>
-                <input type="text" id="bookTitle" name="title" placeholder="Title">
+                <input type="text" id="bookTitle" name="title" placeholder="Title" autocomplete="off" required>
                 <label for="bookTitle">Title</label>
             </fieldset>
             
             <fieldset>
-                <input type="text" id="bookAuthor" name="author" placeholder="Author">
+                <input type="text" id="bookAuthor" name="author" placeholder="Author" autocomplete="off" required>
                 <label for="bookAuthor">Author</label>
             </fieldset>
             
             <fieldset>
-                <input type="text" id="bookPages" name="pages" placeholder="e.g. 225">
-                <label for="bookPages">Number of Pages:</label>
+                <input type="number" id="bookPages" name="pages" placeholder="Number of Pages" autocomplete="off" min="1" required>
+                <label for="bookPages">Number of Pages</label>
             </fieldset>
             
             <fieldset>
                 <label for="bookReadStatus">Read</label>
-                <input type="radio" id="bookReadStatus" name="read">
+                <input type="checkbox" id="bookReadStatus" name="read">
+            </fieldset>
+            <fieldset>
+                <input type="submit" id="submit">
             </fieldset>
             
+            
         </form>
-        <button id="newBook">+ New Book</button>
+        <button id="newBook">+</button>
     </div>
     
 
-    <div id="footer">
-        <div class="quoteDiv">
-            <p class="quote">"I have always imagined that Paradise will be a kind of a Library."
-                <span class="quoter">Jorge Luis Borges </span>
-            </p>
+    <div id="footerContainer">
+        <div id="light-green"> </div>
+        <div id="footer">
+            <!-- <div class="quoteDiv">
+                <p class="quote">"I have always imagined that Paradise will be a kind of a Library."
+                    <span class="quoter">Jorge Luis Borges </span>
+                </p>
+            </div>
+            <div class="quoteDiv"><p class="quote">"Libraries store the energy that fuels the imagination. They open up windows
+                to the world and inspire us to explore and achieve, and contribute to improving our quality
+                 of life." <span class="quoter">Sidney Sheldon </span>
+           </p>
+            </div>
+            <div class="quoteDiv">
+                <p class="quote">"Bad libraries build collections, good libraries build services, 
+                    great libraries build communities."<span class="quoter">R. David Lankes</span>
+                </p>
+            </div>
+            <div class="quoteDiv">
+                <p class="quote">"I have found the most valuable thing in my wallet is my library card."
+                <span class="quoter">Laura Bush </span>
+                </p>
+            </div>
+            <div class="quoteDiv">
+                <p class="quote">"Cutting libraries during a recession is like cutting hospitals during a plague."
+                    <span class="quoter">Eleanor Crumblehulme </span> -->
+                </p>
+            </div>
         </div>
-        <div class="quoteDiv"><p class="quote">"Libraries store the energy that fuels the imagination. They open up windows
-            to the world and inspire us to explore and achieve, and contribute to improving our quality
-             of life." <span class="quoter">Sidney Sheldon </span>
-       </p>
-        </div>
-        <div class="quoteDiv">
-            <p class="quote">"Bad libraries build collections, good libraries build services, 
-                great libraries build communities."<span class="quoter">R. David Lankes</span>
-            </p>
-        </div>
-        <div class="quoteDiv">
-            <p class="quote">"I have found the most valuable thing in my wallet is my library card."
-            <span class="quoter">Laura Bush </span>
-            </p>
-        </div>
-        <div class="quoteDiv">
-            <p class="quote">"Cutting libraries during a recession is like cutting hospitals during a plague."
-                <span class="quoter">Eleanor Crumblehulme </span>
-            </p>
-        </div>
+        
     </div>
 </body>
 </html>

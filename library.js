@@ -1,7 +1,17 @@
 const myLibrary = [];
 const cardContainer = document.getElementById("cardContainer");
 const newBook = document.getElementById("newBook");
+const submit = document.getElementById("submit");
+const formTitle = document.getElementById('bookTitle');
+const formAuthor = document.getElementById('bookAuthor');
+const formPages = document.getElementById('bookPages');
+const formStatus = document.getElementById('bookReadStatus');
 
+//Clicking on new book button does this
+newBook.addEventListener("click", ()=>{
+    const form = document.querySelector('form');
+    form.classList.toggle('active');  
+})
 
 //Book Constructor
 function Book (title, author, numOfPages, readStatus) {
@@ -14,55 +24,82 @@ function Book (title, author, numOfPages, readStatus) {
     this.numOfPages = numOfPages;
     this.readStatus = readStatus;
 }
+//test function for chatgpt that fetches a book cover from openlibrary
+async function fetchBookCover(title) {
+    const query = `https://openlibrary.org/search.json?title=${encodeURIComponent(title)}`;
+    const response = await fetch(query);
+    const data = await response.json();
+    
+    if (data.docs && data.docs.length > 0) {
+      const coverId = data.docs[0].cover_i;
+      if (coverId) {
+        return `https://covers.openlibrary.org/b/id/${coverId}-S.jpg`;
+      } else {
+        return "No cover available";
+      }
+    } else {
+      return "Book not found";
+    }
+  }
 
-//Function taht creates a new book and adds it to myLibrary array
+//Function thatt creates a new book and adds it to myLibrary array
 function addToLibrary (title, author, numOfPages, readStatus){
 
     const book = new Book(title, author, numOfPages, readStatus);
     myLibrary.push(book);
 }
 
-//Clicking on new book button does this
-newBook.addEventListener("click", ()=>{
-    const form = document.querySelector('form');
-    form.classList.toggle('active');
-    
-})
-//added some dummy books in array
-addToLibrary('Dune', 'Frank Herbert', 896, false);
-addToLibrary('Please Kill Me', 'Legs McNeil', 448, false);
-addToLibrary('Patagonia Express', 'Luis Sepulveda', 192, true);
-addToLibrary('To Kill a Mockingbird', 'Harper Lee', 281, false);
-
-
 //Function that displays all books in library array on html
-myLibrary.forEach(Book => {
+async function displayBook(book) {
     const card = document.createElement('div');
     cardContainer.appendChild(card);
     card.classList.add('bookCard');
     
     const cover = document.createElement('img');
-    cover.setAttribute('src', 'https://covers.openlibrary.org/b/OLID/OL26242482M-S.jpg');
+    const bookCover = await fetchBookCover(book.title);
+    
+    cover.setAttribute('src', bookCover);
     card.appendChild(cover);
+
+    if (bookCover.startsWith('http')) {
+        cover.setAttribute('src', bookCover);
+    } else {
+        cover.alt = bookCover; // if "No cover available" or "Book not found"
+    }
 
     const infoDiv = document.createElement('div');
     card.insertBefore(infoDiv, cover);
     
 
     const cardTitle = document.createElement("h2");
-    cardTitle.textContent = `${Book.title}`;
+    cardTitle.textContent = `${book.title}`;
     card.insertBefore(cardTitle, infoDiv);
 
     const cardAuthor = document.createElement("p");
-    cardAuthor.textContent = `by ${Book.author}`;
+    cardAuthor.textContent = `by ${book.author}`;
     infoDiv.appendChild(cardAuthor);
 
     const cardNumOfPages = document.createElement("p");
-    cardNumOfPages.textContent = ` ${Book.numOfPages} pages.`;
+    cardNumOfPages.textContent = ` ${book.numOfPages} pages.`;
     infoDiv.appendChild(cardNumOfPages);
 
     const cardReadStatus = document.createElement("p");
-    (Book.readStatus) ? cardReadStatus.textContent = 'Read!' : cardReadStatus.textContent = 'Not read yet.';
+    (book.readStatus) ? cardReadStatus.textContent = 'Read!' : cardReadStatus.textContent = 'Not read yet.';
     infoDiv.appendChild(cardReadStatus);
+};
+//function for clicking submit on form and showing book on library
+submit.addEventListener("click", async (event)=>{
+    event.preventDefault();
+
+    
+    addToLibrary(formTitle.value, formAuthor.value, formPages.value, formStatus.checked);
+    
+
+    displayBook(myLibrary[myLibrary.length -1]);
+
+    
 });
+
+
+// myLibrary.forEach(displayBook);
 
