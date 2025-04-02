@@ -35,21 +35,21 @@ body {
     height: 100%;
     padding: 1rem;
     grid-area: 2/2/4/3;
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    
-    > #cardContainer {
-        display: flex;
-        flex-direction: column;
-        
-    }
-    
+    justify-content: space-between;   */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-auto-flow: column;
+    overflow: auto;
 }
 
 .bookCard {
+    
     display: flex;
     flex-direction: row;
+    align-items: center;
     width: 100%;
     font-family: junicode, sans-serif;
     font-size: 1.4rem;
@@ -57,7 +57,26 @@ body {
     padding: 1rem;
     box-shadow: 0px 1px 0px 0px rgba(193, 216, 195, 0.692);
     > h2 {
+        align-self: start;
         width: 14rem;
+    }
+    >#infoDiv {
+        width: 10rem;
+    }
+}
+img {
+    margin-left: 2rem;
+    height: 100%;
+    width: 55px;
+    
+}
+#buttonDiv {
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
+    > .cardButtons {
+        height: 40px;
+        width: 40px;
     }
 }
 /* FORM CSS */
@@ -100,14 +119,14 @@ fieldset {
     display: flex;
 }
 label {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     position: absolute;
     transition: all 0.2s ease;
     pointer-events: none;
 }
 
 
-input {
+.formInput {
     position: relative;
     height: 1.5rem;
     width: 70%;
@@ -116,7 +135,7 @@ input {
     border-bottom: dotted black medium ;
     transition: all 0.2s ease;
     font-family: junicode;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 input::placeholder{
     font-size: 0;
